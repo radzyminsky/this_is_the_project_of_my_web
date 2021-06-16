@@ -1,0 +1,15 @@
+<div *ngFor='let type of type_tree_list  let i=index' >
+    <h1>{{carpentry_shop_name_list[i]}}</h1>
+    <ol *ngFor='let tt of type_tree_list[i]' class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">סוג הקרש: {{tt.name_of_Wooden_beam}}</div>
+                אורך: {{tt.length}}
+                מחיר: {{tt.price}}
+                תיאור: {{tt.description}}
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        
+    </ol>
+</div>

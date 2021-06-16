@@ -1,0 +1,38 @@
+<div>
+    <ol *ngFor='let tree of list_carpentry' class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">סוג הקרש: {{tree.name_of_Wooden_beam}}</div>
+                אורך: {{tree.length}}
+                מחיר: {{tree.price}}
+                תיאור: {{tree.description}}
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <button (click)='taken_down(tree)'>
+            <mat-icon> remove</mat-icon>
+        </button>
+    </ol>
+    <button (click)='add()'>
+        <mat-icon>add </mat-icon>
+    </button>
+</div>
+
+
+<div *ngIf='_add'>
+    <label for="name_of_Wooden_beam">הכנס סוג הקרש</label>
+    <input type="text" id="name_of_Wooden_beam" [(ngModel)]="new_tree.name_of_Wooden_beam">
+
+    <label for="length">הכנס אורך הקרש</label>
+    <input type="text" id="length" [(ngModel)]="new_tree.length">
+
+    <label for="price">הכנס מחיר</label>
+    <input type="text" id="price" [(ngModel)]="new_tree.price">
+
+    <label for="description">הכנס תיאור</label>
+    <input type="text" id="description" [(ngModel)]="new_tree.description">
+
+    <button (click)='added()'>
+        הוסף לרשימה
+    </button>
+</div>

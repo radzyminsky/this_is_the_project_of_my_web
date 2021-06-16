@@ -1,0 +1,50 @@
+<body id="homepage">
+
+    <div *ngIf="!showMsg">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">כתובת אימייל</label>
+                <input type="email" #email class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">סיסמא</label>
+                <input type="password" #password class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">אימות סיסמא</label>
+                <input type="password" #password2 class="form-control" id="exampleInputPassword2">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">שם הנגריה </label>
+                <input type="text" #name_of_carpentry class="form-control">
+            </div>
+
+        </form>
+
+        <div >
+            <button type="submit" class="btn btn-primary"
+                (click)='submit(email,password,password2,name_of_carpentry)'>
+                שלח
+            </button>
+
+            <a href="/register" >
+                <button  type="submit" class="btn btn-primary">איפוס</button>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="alert alert-danger" *ngIf="showMsg && messeges.err" role="alert">
+        פרטי הרישום אינם תקינים
+    </div>
+    <div class="alert alert-warning" *ngIf="showMsg && messeges.errpwd" role="alert">
+        שגיאה באימות סיסמא
+    </div>
+
+    <div class="alert alert-success" *ngIf="showMsg && messeges.submited" role="alert">
+        נרשמת בהצלחה
+    </div>
+
+</body>
