@@ -1,4 +1,4 @@
-<div id="homepage" *ngIf='enterning==0'>
+<div id="homepage" *ngIf='login_status ==0'>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">הכנס אימייל</label>
         <input type="email" #email class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -21,7 +21,7 @@
 </div>
 
 
-<div *ngIf='enterning==1'>
+<div *ngIf='login_status==1'>
     <div class="alert alert-success" role="alert">
         נכנסת בהצלחה!
     </div>
@@ -30,7 +30,7 @@
     </button>
 </div>
 
-<div *ngIf='enterning==2'>
+<div *ngIf='login_status==2'>
     <div class="alert alert-danger" role="alert">
         'טעות בשם משתמש או סיסמא'
     </div>
@@ -39,6 +39,6 @@
     </a>
 </div>
 
-<div *ngIf='enterning==3'>
+<div *ngIf='login_status==3'>
     <app-carpentry [list_carpentry]='list_carpentry' (add_to_list)='add_to_list($event)'></app-carpentry>
 </div>

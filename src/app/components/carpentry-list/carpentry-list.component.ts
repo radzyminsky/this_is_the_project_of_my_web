@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OneService } from 'src/app/all_servises/one.service';
 import { analyze } from 'eslint-scope';
-import { tree_type } from 'src/app/interfaces';
+import { types_of_woodens } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-carpentry-list',
@@ -10,7 +10,7 @@ import { tree_type } from 'src/app/interfaces';
 })
 export class CarpentryListComponent implements OnInit {
   
-  type_tree_list: [tree_type[]];
+  type_tree_list: [types_of_woodens[]];
   carpentry_shop_name_list: string[];
 
   constructor(hc: OneService) {
@@ -18,7 +18,7 @@ export class CarpentryListComponent implements OnInit {
     this.type_tree_list = [[]] ;
     this.carpentry_shop_name_list = [];
 
-    hc.get().subscribe((data: { type_tree_list:   [tree_type[]], carpentry_shop_name_list: string[] }) => {
+    hc.get().subscribe((data: { type_tree_list:   [types_of_woodens[]], carpentry_shop_name_list: string[] }) => {
 
       this.type_tree_list = data.type_tree_list;
       this.carpentry_shop_name_list = data.carpentry_shop_name_list;

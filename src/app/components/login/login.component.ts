@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OneService } from 'src/app/all_servises/one.service';
-import { tree_type } from 'src/app/interfaces';
+import { types_of_woodens } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +10,14 @@ import { tree_type } from 'src/app/interfaces';
 export class LoginComponent implements OnInit {
   username_and_password: object;
   hc: OneService;
-  list_carpentry: tree_type[];
-  enterning: number;
+  list_carpentry: types_of_woodens[];
+  login_status: number;
 
   constructor(hc: OneService) {
     this.username_and_password = {};
     this.hc = hc;
     this.list_carpentry = [];
-    this.enterning = 0;
+    this.login_status = 0;
   }
 
   ngOnInit(): void {
@@ -27,20 +27,22 @@ export class LoginComponent implements OnInit {
     this.hc.post1(this.username_and_password).subscribe(data => {
       console.log(data);
       this.list_carpentry = data;
-      this.enterning=1;
+      this.login_status = 1;
     }, (error) => {
       console.log(error);
-      this.enterning=2;
+      this.login_status = 2;
     }
     );
   }
 
-  enter(){
-    this.enterning=3;
+  enter() {
+    this.login_status = 3;
   }
-  
-  add_to_list(event: tree_type[]) {
-    this.hc.put({ username_and_password: this.username_and_password, body: { type_tree: event } }).subscribe((data) => { console.log(data) });
+
+  add_to_list(event: types_of_woodens[]) {
+    this.hc.put({ username_and_password: this.username_and_password, body: { type_tree: event } }).subscribe((data) => {
+      console.log(data)
+    });
 
   }
 
