@@ -14,11 +14,11 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  click(Index: number) {
-    for (let index = 0; index < this.clicked.length; index++) {
-      this.clicked[index] = false;
+  click(index: number) {
+    for (let i = 0; i < this.clicked.length; i++) {
+      this.clicked[i] = false;
     }
-    this.clicked[Index] = true;
+    this.clicked[index] = true;
   }
 
   ngOnInit(): void {

@@ -5,7 +5,7 @@
     
    
 }
-#nuvbar{
+.nuvbar{
     width: 75%;
     margin: 30px auto;
     text-align: right;
@@ -15,3 +15,14 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-secondary{
+    border-radius: 50px;
+}
+
+#heb{
+float: left;
+}
+.parameters{
+    width: 300px;
+}

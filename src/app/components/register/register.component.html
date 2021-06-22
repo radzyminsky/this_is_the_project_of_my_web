@@ -19,17 +19,33 @@
                 <label for="exampleInputPassword1" class="form-label">שם הנגריה </label>
                 <input type="text" #name_of_carpentry class="form-control">
             </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">כתובת רחוב </label>
+                <input type="text" #street class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">מספר בית </label>
+                <input type="text" #num class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">עיר </label>
+                <input type="text" #city class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">טלפון </label>
+                <input type="text" #fon class="form-control">
+            </div>
+            
 
         </form>
 
-        <div >
-            <button type="submit" class="btn btn-primary"
-                (click)='submit(email,password,password2,name_of_carpentry)'>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)='submit(email,password,password2,name_of_carpentry,street,num,city,fon)'>
                 שלח
             </button>
 
-            <a href="/register" >
-                <button  type="submit" class="btn btn-primary">איפוס</button>
+            <a href="/register">
+                <button type="submit" class="btn btn-primary">איפוס</button>
             </a>
         </div>
     </div>
