@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
       console.log(data);
       this.list_carpentry = data;
       this.login_status = 1;
-    }, (error) => {
+    },
+     (error) => {
       console.log(error);
       this.login_status = 2;
-    }
-    );
+    });  
   }
 
   enter() {
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   add_to_list(event: types_of_woodens[]) {
-    this.hc.put({ username_and_password: this.username_and_password, body: { type_tree: event } }).subscribe((data) => {
+    this.hc.put({ username_and_password: this.username_and_password, body: { types_of_woodens: event } }).subscribe((data) => {
       console.log(data)
     });
 

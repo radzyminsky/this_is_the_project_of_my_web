@@ -9,7 +9,7 @@ import { OnlineCalculationComponent } from './components/online-calculation/onli
 import { LoginComponent } from './components/login/login.component';
 import { CarpentryListComponent } from './components/carpentry-list/carpentry-list.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { CarpentryComponent } from './components/carpentry/carpentry.component';
+import { yourCarpentryComponent } from './components/yourCarpentry/yourCarpentry.component';
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
@@ -23,7 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
     LoginComponent,
     CarpentryListComponent,
     HomepageComponent,
-    CarpentryComponent
+    yourCarpentryComponent
   ],
   imports: [
     BrowserModule,

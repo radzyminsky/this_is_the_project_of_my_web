@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OneService } from 'src/app/all_servises/one.service';
 import { analyze } from 'eslint-scope';
-import { types_of_woodens } from 'src/app/interfaces';
+import { types_of_woodens, shop_and_woodens_objects_list } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-carpentry-list',
@@ -9,26 +9,31 @@ import { types_of_woodens } from 'src/app/interfaces';
   styleUrls: ['./carpentry-list.component.css']
 })
 export class CarpentryListComponent implements OnInit {
-  
-  type_tree_list: [types_of_woodens[]];
-  carpentry_shop_name_list: string[];
+
+  shop_and_woodens_objects_list: shop_and_woodens_objects_list[];
+  show_carpentry: boolean;
 
   constructor(hc: OneService) {
+    this.show_carpentry = false;
 
-    this.type_tree_list = [[]] ;
-    this.carpentry_shop_name_list = [];
+    this.shop_and_woodens_objects_list = [{
+      carpentry_shop_name: "",
+      adress: "",
+      fon_numbers: 0,
+      types_of_woodens: []
+    }];
 
-    hc.get().subscribe((data: { type_tree_list:   [types_of_woodens[]], carpentry_shop_name_list: string[] }) => {
+    hc.get().subscribe((data: { shop_and_woodens_objects_list: shop_and_woodens_objects_list[] }) => {
 
-      this.type_tree_list = data.type_tree_list;
-      this.carpentry_shop_name_list = data.carpentry_shop_name_list;
-
+      this.shop_and_woodens_objects_list = data.shop_and_woodens_objects_list;
     });
   }
 
   ngOnInit(): void {
-    
-  }
 
+  }
+  showCarpentry() {
+    this.show_carpentry
+  }
 
 }

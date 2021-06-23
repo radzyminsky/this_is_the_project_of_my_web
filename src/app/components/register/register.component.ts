@@ -24,12 +24,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(email: HTMLInputElement, password: HTMLInputElement, password2: HTMLInputElement, name_of_carpentry: HTMLInputElement, street: HTMLInputElement, num: HTMLInputElement, city: HTMLInputElement, fon: HTMLInputElement) {
+  submit(email: HTMLInputElement, password: HTMLInputElement, password2: HTMLInputElement, name_of_carpentry: HTMLInputElement, adress: HTMLInputElement, fon: HTMLInputElement) {
     console.log(password.value);
     console.log(password2.value);
 
     if (password.value === password2.value)
-      this.post(email.value, password.value, name_of_carpentry.value, street.value, num.value, city.value, fon.value);
+      this.post(email.value, password.value, name_of_carpentry.value, adress.value, fon.value);
     else {
       console.log("error in password");
       this.messeges.errpwd = true;
@@ -37,16 +37,12 @@ export class RegisterComponent implements OnInit {
     }
 
   }
-  post(email: string, password: string, name_of_carpentry: string, street: string, num: string, city: string, fon: string) {
+  post(email: string, password: string, name_of_carpentry: string, adress: string, fon: string) {
     this.jsonOBJ = {
       email: email,
       password: password,
       carpentry_shop_name: name_of_carpentry,
-      adress: {
-        street: street,
-        num: num,
-        city: city
-      },
+      adress:adress,
       fon_numbers:fon
     };
     this.my_servise.post(this.jsonOBJ).subscribe(data => {

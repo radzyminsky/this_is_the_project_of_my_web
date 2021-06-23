@@ -1,0 +1,65 @@
+<div>
+    <ol class="list-group list-group-numbered">
+
+        <li id="heb" *ngFor='let tree of list_carpentry'
+            class="list-group-item d-flex justify-content-between align-items-start">
+
+            <div class=" ms-2 me-auto">
+                <div class="fw-bold">סוג הקרש: {{tree.name_of_Wooden_beam}}</div>
+
+                <div class="parameters">תיאור: {{tree.description}}</div>
+                <div *ngFor='let length_price of tree.price_and_existing_lengthes'>
+                    <div class="parameters">אורך: {{length_price.length}}</div>
+                    <div class="parameters">מחיר: {{length_price.price}}</div>
+                </div>
+            </div>
+
+            <button (click)='taken_down(tree)' class="btn btn-secondary">
+                הסר קרש מהרשימה
+            </button>
+            <button (click)="tree.selected? tree.selected=true: tree.selected=false;" class="btn btn-warning">
+                הוסף אורך ומחיר לסוג הנוכחי
+            </button>
+            <div *ngIf="tree.selected">
+                <fieldset>
+                    <legend>הוסף אורכים ומחיר</legend>
+                    <label for="description"> אורך</label>
+                    <input type="text" id="price" [(ngModel)]="length">
+
+                    <label for="price"> מחיר</label>
+                    <input type="text" id="length" [(ngModel)]="price">
+
+                    <button (click)='added_length_and_price(tree)' class="btn btn-success">
+                        עדכן
+                    </button>
+                </fieldset>
+            </div>
+        </li>
+
+    </ol>
+    <button *ngIf='!_add' (click)='add()' class="btn btn-primary">
+        add
+    </button>
+</div>
+
+
+<div *ngIf='_add'>
+    <fieldset>
+        <legend>הכנס פרטי הקרש</legend>
+        <label for="name_of_Wooden_beam"> סוג </label>
+        <input type="text" id="name_of_Wooden_beam" [(ngModel)]="new_tree.name_of_Wooden_beam">
+
+        <label for="length"> תיאור </label>
+        <input type="text" id="description" [(ngModel)]="new_tree.description">
+
+        <label for="price"> אורך</label>
+        <input type="text" id="length" [(ngModel)]="new_tree.price_and_existing_lengthes[0].length">
+
+        <label for="description"> מחיר</label>
+        <input type="text" id="price" [(ngModel)]="new_tree.price_and_existing_lengthes[0].price">
+    </fieldset>
+    <button (click)='added()' class="btn btn-success">
+        הוסף לרשימה
+    </button>
+
+</div>
