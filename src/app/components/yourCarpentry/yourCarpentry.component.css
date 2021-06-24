@@ -1,0 +1,10 @@
+.ib{
+    display: inline-block;
+}
+.border{
+    border: 2px;
+    border-color: darkgoldenrod;
+    border-radius: 5px;
+    margin: 5px 2px;
+    padding: 5px;
+}

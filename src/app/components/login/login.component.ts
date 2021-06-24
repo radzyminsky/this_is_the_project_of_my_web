@@ -10,13 +10,13 @@ import { types_of_woodens } from 'src/app/interfaces';
 export class LoginComponent implements OnInit {
   username_and_password: object;
   hc: OneService;
-  list_carpentry: types_of_woodens[];
+  typesWoodens: types_of_woodens[];
   login_status: number;
 
   constructor(hc: OneService) {
     this.username_and_password = {};
     this.hc = hc;
-    this.list_carpentry = [];
+    this.typesWoodens = [];
     this.login_status = 0;
   }
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.username_and_password = { email: email.value, password: password.value };
     this.hc.post1(this.username_and_password).subscribe(data => {
       console.log(data);
-      this.list_carpentry = data;
+      this.typesWoodens = data;
       this.login_status = 1;
     },
      (error) => {

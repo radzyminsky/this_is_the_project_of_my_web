@@ -1,46 +1,111 @@
 <div>
-    <ol class="list-group list-group-numbered">
+<ol class="list-group list-group-numbered">
 
-        <li id="heb" *ngFor='let tree of list_carpentry'
-            class="list-group-item d-flex justify-content-between align-items-start">
+    <li id="heb" *ngFor='let tree of typesWoodens'
+        class="list-group-item d-flex justify-content-between align-items-start">
 
-            <div class=" ms-2 me-auto">
-                <div class="fw-bold">סוג הקרש: {{tree.name_of_Wooden_beam}}</div>
+        <div class=" ms-2 me-auto">
+            <div class="fw-bold ib">סוג הקרש: {{tree.name_of_Wooden_beam}}</div>
 
-                <div class="parameters">תיאור: {{tree.description}}</div>
-                <div *ngFor='let length_price of tree.price_and_existing_lengthes'>
-                    <div class="parameters">אורך: {{length_price.length}}</div>
-                    <div class="parameters">מחיר: {{length_price.price}}</div>
+            <div class="parameters ib">תיאור: {{tree.description}}</div>
+
+            <fieldset *ngIf="!tree.update">
+                <legend>קיים באורכים</legend>
+                <div *ngFor='let length_price of tree.price_and_existing_lengthes' class="border">
+
+                    
+                    <div class="parameters ib">אורך: {{length_price.length}}</div>
+
+                    
+                    <div class="parameters ib" >מחיר: {{length_price.price}}</div>
                 </div>
+
+                <button (click)="tree.update? tree.update = false: tree.update = true;" class="btn btn-warning">
+                    עדכן
+                </button>
+            </fieldset>
+        </div>
+
+
+        <fieldset *ngIf="tree.update">
+            <legend>קיים באורכים</legend>
+
+
+            <!-- תצוגת אינפוט לעדכון קרשים קיימים -->
+            <div *ngFor='let length_price of tree.price_and_existing_lengthes' class="border">
+               
+                    אורך:<input class="border ib" id="length" [(ngModel)]="length_price.length">
+                      
+                    מחיר:<input class="form-control ib" id="price" [(ngModel)]="length_price.price">
             </div>
 
-            <button (click)='taken_down(tree)' class="btn btn-secondary">
-                הסר קרש מהרשימה
-            </button>
-            <button (click)="tree.selected? tree.selected=true: tree.selected=false;" class="btn btn-warning">
-                הוסף אורך ומחיר לסוג הנוכחי
-            </button>
-            <div *ngIf="tree.selected">
-                <fieldset>
-                    <legend>הוסף אורכים ומחיר</legend>
-                    <label for="description"> אורך</label>
-                    <input type="text" id="price" [(ngModel)]="length">
-
-                    <label for="price"> מחיר</label>
-                    <input type="text" id="length" [(ngModel)]="price">
-
-                    <button (click)='added_length_and_price(tree)' class="btn btn-success">
-                        עדכן
-                    </button>
-                </fieldset>
+            <!-- תצוגת אינפוט להוספת קרש חדש -->
+            <div class="mb-3 ib">
+                <label for="length" class="form-label ib">אורך </label>
+                <input class="form-control ib" id="length" [(ngModel)]="length">
             </div>
-        </li>
+            <div class="mb-3 ib">
+                <label for="price" class="form-label ib">מחיר </label>
+                <input class="form-control ib" id="price" [(ngModel)]="price">
+            </div>
 
-    </ol>
-    <button *ngIf='!_add' (click)='add()' class="btn btn-primary">
-        add
-    </button>
+            <button (click)='added_length_and_price(tree); tree.update=false;' class="btn btn-success">
+                שמור שינויים
+            </button>
+        </fieldset>
+
+
+
+    </li>
+
+</ol>
+<!-- 
+
+לעבוד על כל מה שבהערה ולראות מה מתוכם אני צריך להשאיר
+
+
+<ol class="list-group list-group-numbered">
+    <li id="heb" *ngFor='let tree of typesWoodens'
+        class="list-group-item d-flex justify-content-between align-items-start">
+        <div *ngIf="tree.update">
+            <div class=" ms-2 me-auto">
+                <button (click)='taken_down(tree)' class="btn btn-secondary">
+                    הסר קרש מהרשימה
+                </button>
+
+                <div *ngIf="tree.update">
+                    <fieldset>
+                        <legend>הוסף אורכים ומחיר</legend>
+                        <div class="border">
+
+
+                            <div class="mb-3 ib">
+                                <label for="length" class="form-label ib">אורך </label>
+                                <input class="form-control ib" [(ngModel)]="length">
+                            </div>
+                            <div class="mb-3 ib">
+                                <label for="price" class="form-label ib">מחיר </label>
+                                <input class="form-control ib" id="price" [(ngModel)]="price">
+                            </div>
+
+                        </div>
+                        <button (click)='added_length_and_price(tree); tree.update=false;' class="btn btn-success">
+                            שמור שינויים
+                        </button>
+                    </fieldset>
+                </div>
+
+            </div>
+        </div>
+    </li>
+
+</ol> -->
+
+<button *ngIf='!_add' (click)='add()' class="btn btn-primary">
+    add
+</button>
 </div>
+
 
 
 <div *ngIf='_add'>

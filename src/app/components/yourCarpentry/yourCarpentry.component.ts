@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class yourCarpentryComponent implements OnInit {
 
-  @Input() list_carpentry: types_of_woodens[] = [];
+  @Input() typesWoodens: types_of_woodens[] = [];
   @Output() add_to_list: EventEmitter<types_of_woodens[]>;
   _add: boolean;
   new_tree: types_of_woodens;
@@ -23,11 +23,11 @@ export class yourCarpentryComponent implements OnInit {
       name_of_Wooden_beam: "",
       description: "",
       price_and_existing_lengthes: [{
-        length: 0,
+        length:0,
         price: 0
       }]
-    }
-    this._add =false
+    };
+    this._add =false;
     this.length = 0;
     this.price = 0;
   }
@@ -40,13 +40,13 @@ export class yourCarpentryComponent implements OnInit {
   }
 
   taken_down(tree: types_of_woodens) {
-    this.list_carpentry.splice(this.list_carpentry.indexOf(tree), 1);
-    this.add_to_list.emit(this.list_carpentry);
+    this.typesWoodens.splice(this.typesWoodens.indexOf(tree), 1);
+    this.add_to_list.emit(this.typesWoodens);
   }
 
   added() {
     this._add = false
-    this.list_carpentry.push({
+    this.typesWoodens.push({
       name_of_Wooden_beam: this.new_tree.name_of_Wooden_beam,
       description: this.new_tree.description,
 
@@ -64,19 +64,19 @@ export class yourCarpentryComponent implements OnInit {
         price: 0
       }]
     }
-    this.add_to_list.emit(this.list_carpentry);
+    this.add_to_list.emit(this.typesWoodens);
   }
 
   
   added_length_and_price(tree: types_of_woodens) {
     this._add = false
-    let index=this.list_carpentry.indexOf(tree);
-    this.list_carpentry[index].price_and_existing_lengthes.push({
+    let index=this.typesWoodens.indexOf(tree);
+    this.typesWoodens[index].price_and_existing_lengthes.push({
       length:this.length,
       price:this.price
     });
     this.length = 0;
     this.price = 0;
-    this.add_to_list.emit(this.list_carpentry);
+    this.add_to_list.emit(this.typesWoodens);
   }
 }

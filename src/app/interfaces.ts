@@ -4,7 +4,9 @@ export interface types_of_woodens {
     price_and_existing_lengthes: [{
         length: Number,
         price: Number,
-    }]
+       
+    }],
+    update?:boolean
 }
 
 export interface shop_and_woodens_objects_list {
