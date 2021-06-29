@@ -1,5 +1,6 @@
 .ib{
     display: inline-block;
+  
 }
 .border{
     border: 2px;
@@ -7,4 +8,27 @@
     border-radius: 5px;
     margin: 5px 2px;
     padding: 5px;
+    background-color: beige;
+   
+  
+}
+.update{
+   
+    background-color: beige;
+    width: 40%;
+    top: 50px;
+    left: 30%;
+}
+.page{
+    
+    margin: 30px,auto;
+}
+fieldset{
+    margin: 30px,auto;
+}
+list-group-item{
+  text-align: center;
+}
+#margi{
+    margin: auto !important;
 }

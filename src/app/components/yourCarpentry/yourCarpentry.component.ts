@@ -12,7 +12,7 @@ export class yourCarpentryComponent implements OnInit {
 
   @Input() typesWoodens: types_of_woodens[] = [];
   @Output() add_to_list: EventEmitter<types_of_woodens[]>;
-  _add: boolean;
+  display_status: number;
   new_tree: types_of_woodens;
   length: number;
   price: number;
@@ -23,11 +23,11 @@ export class yourCarpentryComponent implements OnInit {
       name_of_Wooden_beam: "",
       description: "",
       price_and_existing_lengthes: [{
-        length:0,
+        length: 0,
         price: 0
       }]
     };
-    this._add =false;
+    this.display_status = 0;
     this.length = 0;
     this.price = 0;
   }
@@ -36,7 +36,7 @@ export class yourCarpentryComponent implements OnInit {
   }
 
   add() {
-    this._add = true;
+    this.display_status = 1;
   }
 
   taken_down(tree: types_of_woodens) {
@@ -45,7 +45,7 @@ export class yourCarpentryComponent implements OnInit {
   }
 
   added() {
-    this._add = false
+    
     this.typesWoodens.push({
       name_of_Wooden_beam: this.new_tree.name_of_Wooden_beam,
       description: this.new_tree.description,
@@ -67,16 +67,24 @@ export class yourCarpentryComponent implements OnInit {
     this.add_to_list.emit(this.typesWoodens);
   }
 
-  
+
   added_length_and_price(tree: types_of_woodens) {
-    this._add = false
-    let index=this.typesWoodens.indexOf(tree);
+    
+    let index = this.typesWoodens.indexOf(tree);
     this.typesWoodens[index].price_and_existing_lengthes.push({
-      length:this.length,
-      price:this.price
+      length: this.length,
+      price: this.price
     });
     this.length = 0;
     this.price = 0;
     this.add_to_list.emit(this.typesWoodens);
+  }
+
+  sub_length_and_price(tree: types_of_woodens, length_price: { length: number, price: number }) {
+    let index1 = this.typesWoodens.indexOf(tree);
+    let index2 = this.typesWoodens[index1].price_and_existing_lengthes.indexOf(length_price);
+    this.typesWoodens[index1].price_and_existing_lengthes.splice(index2,1);
+    this.add_to_list.emit(this.typesWoodens);
+
   }
 }

@@ -1,0 +1,27 @@
+<div>
+    <div>
+        <div *ngFor="let this_cat of cuts_list">
+            <p>
+                אורך: {{this_cat.length_size}}
+            </p>
+            <p>
+                מספר חיתוכים: {{this_cat.cutts_sum_of_this_size}}
+            </p>
+            <button (click)="sub_from_cuts_list(this_cat);"> הסר</button>
+        </div>
+    </div>
+    <p>
+        <label for="new_cut_length">הכנס אורך</label>
+        <input type="text" id="new_cut_length" [(ngModel)]=new_cut.length_size>
+    </p>
+    <p>
+        <label for="new_cut_length">הכנס סכום חיתוכים</label>
+        <input type="text" id="new_cut_length" [(ngModel)]=new_cut.cutts_sum_of_this_size>
+    </p>
+    <div>
+        <button (click)="add_to_cuts_list();"> הוסף חיתוך חדש</button>
+    </div>
+    <div>
+        <button >חשב</button>
+    </div>
+</div>

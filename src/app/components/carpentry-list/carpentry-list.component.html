@@ -1,23 +1,43 @@
-<div *ngFor='let obj of shop_and_woodens_objects_list '>
+<div *ngIf="!keep_to_cutting_component">
+    <div *ngFor='let obj of shop_and_woodens_objects_list '>
 
-    <div class="card text-center">
+        <div class="card text-center">
 
-        <div class="card-body">
-            <h5 class="card-title">{{obj.carpentry_shop_name}}</h5>
-            <p class="card-text"> {{obj.adress}}</p>
-            <button class="btn btn-primary" (click)="obj.selected? obj.selected = false : obj.selected = true;">
-                הצג רשימת הקרשים
-            </button>
-            <div *ngIf="obj.selected">
-                <div *ngFor="let wood of obj.types_of_woodens">
-                    <div>{{wood.name_of_Wooden_beam}}</div>
-                    <div>{{wood.description}}</div>
-                    <div *ngFor="let lengthes of wood.price_and_existing_lengthes">
-                        <div> {{lengthes.length}}</div>
-                        <div>{{lengthes.price}}</div>
-                    </div>
-                </div>
+            <div class="card-body">
+                <h5 class="card-title">{{obj.carpentry_shop_name}}</h5>
+                <p class="card-text"> {{obj.adress}}</p>
+                <button class="btn btn-primary" (click)="obj.selected? obj.selected = false : obj.selected = true;">
+                    הצג רשימת הקרשים
+                </button>
+                <ol class="list-group list-group-numbered" *ngIf="obj.selected">
+
+                    <li id="heb" *ngFor="let wood of obj.types_of_woodens"
+                        class="list-group-item d-flex justify-content-between align-items-start ib">
+
+                        <div class=" ms-2 me-auto ib " id="margi">
+                            <div class="fw-bold ib">סוג הקרש: {{wood.name_of_Wooden_beam}}</div>
+
+                            <div class="parameters ib">תיאור: {{wood.description}}</div>
+
+                            <fieldset>
+                                <legend>קיים באורכים</legend>
+                                <div *ngFor='let length_price of wood.price_and_existing_lengthes' class="border">
+
+                                    <div class="parameters ib">אורך: {{length_price.length}}</div>
+                                    <div class="parameters ib">מחיר: {{length_price.price}}</div>
+                                </div>
+
+                            </fieldset>
+                            <button (click)=" pass_to_cutting_component(obj.wood);" class="btn btn-success">בחר</button>
+                        </div>
+                    </li>
+
+                </ol>
+
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="keep_to_cutting_component">
+        <app-cutting-list [types_of_woodens]=></app-cutting-list>>
 </div>

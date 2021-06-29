@@ -13,6 +13,8 @@ import { yourCarpentryComponent } from './components/yourCarpentry/yourCarpentry
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import { UtillsComponent } from './components/utills/utills.component';
+import { CuttingListComponent } from './components/cutting-list/cutting-list.component';
 
 @NgModule({
   declarations: [                                                         
@@ -23,7 +25,9 @@ import {MatIconModule} from '@angular/material/icon';
     LoginComponent,
     CarpentryListComponent,
     HomepageComponent,
-    yourCarpentryComponent
+    yourCarpentryComponent,
+    UtillsComponent,
+    CuttingListComponent
   ],
   imports: [
     BrowserModule,
