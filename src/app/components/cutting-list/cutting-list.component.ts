@@ -1,5 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { cutting } from 'src/app/interfaces';
+import { cutting, types_of_woodens } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-cutting-list',
@@ -7,13 +7,21 @@ import { cutting } from 'src/app/interfaces';
   styleUrls: ['./cutting-list.component.css']
 })
 
-@Input() types_of_woodens: types_of_woodens;
-export class CuttingListComponent implements OnInit {
 
+export class CuttingListComponent implements OnInit {
+  @Input()types_of_woodens: types_of_woodens ;
   cuts_list: cutting[];
   new_cut: cutting;
 
   constructor() {
+    this.types_of_woodens={
+      description:'',
+      name_of_Wooden_beam:'',
+      price_and_existing_lengthes:[{
+        length:0,
+        price:0
+      }],
+    }
     this.cuts_list = [];
     this.new_cut = {
       length_size: 0,

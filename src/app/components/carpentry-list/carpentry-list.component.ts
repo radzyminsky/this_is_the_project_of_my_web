@@ -11,7 +11,7 @@ import { types_of_woodens, shop_and_woodens_objects_list } from 'src/app/interfa
 export class CarpentryListComponent {
   keep_to_cutting_component: boolean;
   shop_and_woodens_objects_list: shop_and_woodens_objects_list[];
-  the_selected_wooden_for_caculat: types_of_woodens;
+  the_selected_wooden_for_caculate: types_of_woodens;
 
 
   constructor(hc: OneService) {
@@ -28,7 +28,7 @@ export class CarpentryListComponent {
       this.shop_and_woodens_objects_list = data.shop_and_woodens_objects_list;
     });
 
-    this.the_selected_wooden_for_caculat = {
+    this.the_selected_wooden_for_caculate = {
       name_of_Wooden_beam: "",
       description: "",
       price_and_existing_lengthes: [{
@@ -40,7 +40,7 @@ export class CarpentryListComponent {
   }
   pass_to_cutting_component(types_of_woodens: types_of_woodens) {
     this.keep_to_cutting_component = true;
-    this.the_selected_wooden_for_caculat = types_of_woodens;
+    this.the_selected_wooden_for_caculate = types_of_woodens;
   }
 
 }

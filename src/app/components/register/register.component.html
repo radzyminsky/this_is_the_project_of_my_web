@@ -12,28 +12,34 @@
                 <input type="password" #password class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">אימות סיסמא</label>
+                <label for="exampleInputPassword2" class="form-label">אימות סיסמא</label>
                 <input type="password" #password2 class="form-control" id="exampleInputPassword2">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">שם הנגריה </label>
+                <label class="form-label">שם הנגריה </label>
                 <input type="text" #name_of_carpentry class="form-control">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label"> כתובת מלאה </label>
+                <label class="form-label"> כתובת מלאה </label>
                 <input type="text" #adress class="form-control">
             </div>
-           
+
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">טלפון </label>
+                <label class="form-label">טלפון </label>
                 <input type="text" #fon class="form-control">
             </div>
-            
+
+            <div class="mb-3">
+                <label class="form-label">תמונת לוגו </label>
+                <input type="file" #image class="form-control" accept=".jpg , .pdf">
+            </div>
+
 
         </form>
 
         <div>
-            <button type="submit" class="btn btn-primary" (click)='submit(email,password,password2,name_of_carpentry,adress,fon)'>
+            <button type="submit" class="btn btn-primary"
+                (click)='submit(email,password,password2,name_of_carpentry,adress,fon,image)'>
                 שלח
             </button>
 

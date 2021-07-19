@@ -1,27 +1,48 @@
 <div>
     <div>
-        <div *ngFor="let this_cat of cuts_list">
-            <p>
+        <div *ngFor="let this_cat of cuts_list" class="border">
+            <p class="ib">
                 אורך: {{this_cat.length_size}}
             </p>
-            <p>
+            <p class="ib">
                 מספר חיתוכים: {{this_cat.cutts_sum_of_this_size}}
             </p>
-            <button (click)="sub_from_cuts_list(this_cat);"> הסר</button>
+            <button (click)="sub_from_cuts_list(this_cat);" class="btn btn-danger garbage">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+            </button>
         </div>
     </div>
-    <p>
-        <label for="new_cut_length">הכנס אורך</label>
-        <input type="text" id="new_cut_length" [(ngModel)]=new_cut.length_size>
-    </p>
-    <p>
-        <label for="new_cut_length">הכנס סכום חיתוכים</label>
-        <input type="text" id="new_cut_length" [(ngModel)]=new_cut.cutts_sum_of_this_size>
-    </p>
-    <div>
-        <button (click)="add_to_cuts_list();"> הוסף חיתוך חדש</button>
+    <div class="border">
+        <p>
+            <label for="new_cut_length">הכנס אורך</label>
+            <input type="text" id="new_cut_length" [(ngModel)]=new_cut.length_size>
+        </p>
+        <p>
+            <label for="new_cut_length">הכנס סכום חיתוכים</label>
+            <input type="text" id="new_cut_length" [(ngModel)]=new_cut.cutts_sum_of_this_size>
+        </p>
     </div>
-    <div>
-        <button >חשב</button>
+    <div style="position: absolute;">
+        <div class="ib" style="position: relative; right:100%px">
+            <button (click)="add_to_cuts_list();" class="btn btn-warning "><svg xmlns="http://www.w3.org/2000/svg"
+                    width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg> הוסף חיתוך חדש</button>
+        </div>
+        <div class="ib" style="position: relative; left:100%px">
+            <button class="btn btn-success "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-file-spreadsheet" viewBox="0 0 16 16">
+                    <path
+                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v4h10V2a1 1 0 0 0-1-1H4zm9 6h-3v2h3V7zm0 3h-3v2h3v-2zm0 3h-3v2h2a1 1 0 0 0 1-1v-1zm-4 2v-2H6v2h3zm-4 0v-2H3v1a1 1 0 0 0 1 1h1zm-2-3h2v-2H3v2zm0-3h2V7H3v2zm3-2v2h3V7H6zm3 3H6v2h3v-2z" />
+                </svg>חשב</button>
+        </div>
     </div>
 </div>
